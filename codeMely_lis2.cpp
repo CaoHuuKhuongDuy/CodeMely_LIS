@@ -41,7 +41,7 @@ signed main() {
     int maxLen = 0;
     for (int i = 1; i <= n; i++)
       {
-         int pos = binarySearch(0, maxLen + 1, a[i]); // Vị trí đầu tiên mà dp[pod] >= a[i]
+         int pos = binarySearch(0, maxLen + 1, a[i]); // Vị trí đầu tiên mà dp[pos] >= a[i]
          dp[pos] = a[i];
          maxLen = max(maxLen, pos); // Nếu a[i] tạo ra dãy có độ dài pos > maxLen thì cập nhật kết quả  
       }
