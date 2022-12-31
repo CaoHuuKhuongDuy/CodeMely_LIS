@@ -22,7 +22,7 @@ signed main() {
     a[0] = -oo;
     for (int i = 1; i <= n; i++)
       for (int j = 0; j < i; j++)
-        if (a[i] >= a[j]) dp[i] = max(dp[i], dp[j] + 1);     
+        if (a[i] > a[j]) dp[i] = max(dp[i], dp[j] + 1);     
       
     int res = 0;
     for (int i = 1; i <= n; i++)
