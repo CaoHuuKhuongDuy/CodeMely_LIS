@@ -14,7 +14,7 @@ using namespace std;
 const int N = 1e5 + 9;
 const int oo = 1e9 + 9;
 
-int n, a[N], dp[N], fen[N];
+int n, a[N], dp[N];
 
 // dp[i] : Độ dài dãy con tăng dài nhất kết thúc tại phần tử có giá trị i    
 
@@ -22,7 +22,7 @@ void update(int id, int x) {
   
     while (id <= n) 
       {  
-        fen[id] = max(fen[id], x);
+        dp[id] = max(dp[id], x);
         id += id & (-id);
       }
   
@@ -33,7 +33,7 @@ int get(int id) {
     int res = 0;
     while (id > 0) 
       {
-        res = max(res, fen[id]);
+        res = max(res, dp[id]);
         id -= id & (-id);
       }
   
