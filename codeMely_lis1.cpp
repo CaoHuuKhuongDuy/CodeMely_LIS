@@ -13,6 +13,10 @@ int n, a[N], dp[N];
 
 // dp[i] : Dãy con tăng dài nhất kết thúc tại i
 
+// dp[i] = max(dp[j] + 1) với i > j và a[i] > a[j] 
+
+// Tức là đặt a[i] vào sau dãy kết thúc tại a[j] và tạo thành dãy con có độ dài dp[j] + 1 
+
 signed main() {
   
     cin >> n;
