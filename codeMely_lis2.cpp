@@ -15,7 +15,7 @@ int n, a[N], dp[N];
 
 int binarySearch(int l, int r, int x) {
   
-    int res;
+    int res = 1;
     while (l <= r) { 
       int mid = (l + r) / 2;
       if (dp[mid] >= x) {
