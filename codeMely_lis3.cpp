@@ -5,9 +5,6 @@
 #include <iostream>
 #include <algorithm>
 #include <map>
-#include <vector>
-#include <set>
-
 
 using namespace std;
 
@@ -16,9 +13,15 @@ const int oo = 1e9 + 9;
 
 int n, a[N], dp[N];
 
-// dp[i] : Độ dài dãy con tăng dài nhất kết thúc tại phần tử có giá trị i    
+// dp[val] : Độ dài dãy con tăng dài nhất kết thúc tại phần tử có giá trị val    
 
-void update(int id, int x) {
+// dp[val] = max(dp[x] + 1) với 0 <= x < val
+
+// Ta có thể đặt phần tử có giá trị val vào sau phần tử có giá trị x (vì x < val) 
+
+// và tạo thành dãy có độ dài dp[x] + 1
+
+void update(int id, int x) {   // dp[id] = x (thao tác cập nhật trên fenwick tree)
   
     while (id <= n) 
       {  
@@ -28,7 +31,7 @@ void update(int id, int x) {
   
 }
 
-int get(int id) {
+int get(int id) {             // max(dp[0..id]) (thao tác lấy giá trị trên fenwick tree)
   
     int res = 0;
     while (id > 0) 
@@ -37,7 +40,7 @@ int get(int id) {
         id -= id & (-id);
       }
   
-  return res;
+    return res;
 }
 map <int, int> number;
 
@@ -64,11 +67,11 @@ signed main() {
     int res = 0;
     for (int i = 1; i <= n; i++) 
       {
-        int len = get(a[i] - 1);      // Dãy con dài nhất mà phần tử kết thúc < a[i]
+        int len = get(a[i] - 1);  // Dãy con dài nhất mà phần tử kết thúc < a[i]. ie max(dp[x]) với x < a[i]
         res = max(res, len + 1);  
-        update(a[i], len + 1);
+        update(a[i], len + 1);    // gán dp[len + 1] = a[i]
       }
 
     cout << res;
-	return 0;
+    return 0;
 }
