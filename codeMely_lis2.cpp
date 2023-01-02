@@ -11,7 +11,7 @@ const int oo = 1e9 + 9;
 
 int n, a[N], dp[N];
 
-// dp[i] : giá trị phần tử kết thúc nhỏ nhất với dãy con tăng độ dài i (tại thời điểm đang xét)    
+// dp[len] : giá trị phần tử kết thúc nhỏ nhất với dãy con tăng độ dài len (tại thời điểm đang xét)    
 
 int binarySearch(int l, int r, int x) {
   
@@ -41,11 +41,11 @@ signed main() {
     int maxLen = 0;
     for (int i = 1; i <= n; i++)
       {
-         int len = binarySearch(0, maxLen + 1, a[i]); // Vị trí đầu tiên mà dp[len] >= a[i]
-         dp[len] = a[i];
-         maxLen = max(maxLen, len); // Nếu a[i] tạo ra dãy có độ dài len > maxLen thì cập nhật kết quả  
+        int len = binarySearch(0, maxLen + 1, a[i]); // Vị trí đầu tiên mà dp[len] >= a[i] => dp[x] < a[i] (x < len)
+        dp[len] = a[i];    // len chính là độ dài dãy con tăng dài nhất kết thúc tại a[i]
+        maxLen = max(maxLen, len);  
       }
     cout << maxLen;
   
-    return 0;
+	return 0;
 }
